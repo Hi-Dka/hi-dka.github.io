@@ -28,7 +28,7 @@ google_adsense = ""     # example: ca-pub-xxxxxxxxxxxxxxxx
 custom_script = ""
 # copyright
 copyright = "Designed & Developed by [Zeon Studio](https://zeon.studio)"
-
+icp_record_number = "备案号：[蜀ICP备2024046344号-1](https://beian.miit.gov.cn)"
 # Preloader
 # preloader module: https://github.com/gethugothemes/hugo-modules/tree/master/components/preloader
 [preloader]

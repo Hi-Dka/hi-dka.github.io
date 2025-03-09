@@ -1,6 +1,15 @@
 ################ English language ##################
 [en]
-languageName = "En"
+languageName = "English"
 languageCode = "en-us"
 contentDir = "content/english"
 weight = 1
+params = { copyright = "Copyright © 2025 Hi-Dka. All rights reserved." }
+
+################ Chinese language ##################
+[zh]
+languageName = "中文"
+languageCode = "zh-cn"
+contentDir = "content/chinese"
+weight = 1
+params = { copyright = "Copyright © 2025 Hi-Dka. 保留所有权利。" }

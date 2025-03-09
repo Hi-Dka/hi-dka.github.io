@@ -11,3 +11,24 @@
 # from = '/**'
 # to = '/en/404.html'
 # status = 404
+
+
+# ...existing config...
+
+# Chinese
+[[redirects]]
+from = "/zh/**"
+to = "/zh/404.html"
+status = 404
+
+# English
+[[redirects]]
+from = "/en/**"
+to = "/en/404.html"
+status = 404
+
+# Default language must be last.
+[[redirects]]
+from = "/**"
+to = "/en/404.html"
+status = 404
