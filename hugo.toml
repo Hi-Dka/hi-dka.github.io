@@ -1,6 +1,6 @@
 ######################## default configuration ####################
 # The base URL of your site (required). This will be prepended to all relative URLs.
-baseURL = "https://hi-dka.github.io"
+baseURL = "https://www.hidka.com"
 # Title of your website (required).
 title = "Hugoplate"
 # Your theme name
