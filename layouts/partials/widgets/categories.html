@@ -8,11 +8,18 @@
           {{ range $name, $items := site.Taxonomies.categories }}
             <li>
               <a
-                class="hover:text-primary dark:hover:text-darkmode-primary {{ if (and (eq $.Page.Kind `term`) (eq $.Page.Type `categories`) (eq $.Page.Title .Page.Title)) }}
-                  active
+                class="categories-underline hover:text-black dark:hover:text-white 
+                {{ if (and (eq $.Page.Kind `term`) (eq $.Page.Type `categories`) 
+                 (eq $.Page.Title .Page.Title)) }} active
                 {{ end }} flex justify-between"
                 href="{{ .Page.RelPermalink }}">
-                {{ .Page.Title }} <span>( {{ len $items }} )</span>
+                <div class="flex items-center">
+                  <i class="fa-regular fa-folder mr-1"></i>
+                  {{ .Page.Title }}
+                </div>
+                <span>( {{ len $items }} )</span>
+                {{/*  <i class="fa-regular fa-folder"></i>
+                {{ .Page.Title }} <span>( {{ len $items }} )</span>  */}}
               </a>
             </li>
           {{ end }}

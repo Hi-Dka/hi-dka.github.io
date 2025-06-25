@@ -7,6 +7,7 @@ image: "/images/image-placeholder.png"
 categories: ["Data"]
 author: "Sam Wilson"
 tags: ["technology", "tailwind"]
+nextArticle: "/blog/post-1"
 draft: false
 ---
 

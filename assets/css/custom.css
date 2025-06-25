@@ -1,2 +1,57 @@
 /* DO NOT WRITE ANY STYLE IN THIS FILE */
 /* If you want to add your own styles, please write it in the `./assets/css/custom.css` file. */
+
+.header {
+    @apply py-4 bg-white dark:bg-darkmode-theme-light shadow-sm sticky top-0 z-30
+}
+
+div.chart {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+
+  overflow-x: auto;
+
+  svg {
+    display: inherit;
+  }
+}
+
+html, body {
+  scroll-padding-top: 120px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.next-article-title-underline {
+  @apply font-bold text-dark dark:text-darkmode-dark 
+         underline decoration-gray-300 dark:decoration-gray-500
+         decoration-2 underline-offset-4
+         group-hover:decoration-black dark:group-hover:decoration-white
+         transition-colors duration-200;
+}
+
+
+.blog-list-title-underline {
+  @apply underline decoration-gray-300 dark:decoration-gray-500
+         decoration-3 underline-offset-4
+         hover:decoration-black dark:hover:decoration-white
+         transition-colors duration-200;
+}
+
+.blog-list-categories-underline {
+  @apply underline decoration-gray-300 dark:decoration-gray-500
+         decoration-2 underline-offset-4
+         hover:decoration-black dark:hover:decoration-white
+         transition-colors duration-200;
+}
+
+.categories-underline {
+  @apply underline decoration-white dark:decoration-gray-500
+         decoration-2 underline-offset-4
+         hover:decoration-black dark:hover:decoration-white
+         transition-colors duration-200;
+}

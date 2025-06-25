@@ -17,6 +17,7 @@
   </head>
 
   <body>
+    {{ partial "components/svg-sprite.html" . }}
     <!-- cache partial only in production -->
     {{ if hugo.IsProduction }}
       {{ partialCached "preloader.html" . }}

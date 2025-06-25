@@ -12,18 +12,18 @@ url = "/about"
 weight = 2
 
 [[main]]
-name = "元素"  # 将 "Elements" 更新为 "元素"
-url = "/elements"
+name = "博客"  # 将 "Elements" 更新为 "元素"
+url = "/blog"
 weight = 3
 
 [[main]]
 weight = 4
 name = "页面"
 
-[[main]]
-parent = "页面"
-name = "博客"
-url = "/blog"
+# [[main]]
+# parent = "页面"
+# name = "博客"
+# url = "/blog"
 
 [[main]]
 parent = "页面"

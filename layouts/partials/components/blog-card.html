@@ -3,35 +3,44 @@
   {{ if $image }}
     {{ partial "image" (dict "Src" $image "Context" .Page "Alt" .Title "Class" "mb-6 w-full rounded") }}
   {{ end }}
-  <h4 class="mb-3">
+  <h4 class="blog-list-title-underline mb-1">
     <a href="{{ .RelPermalink }}">
       {{ .Title }}
     </a>
   </h4>
+
   {{ $categories:= .Params.categories }}
   {{ if $categories }}
-    <ul class="mb-4">
-      <li class="mr-4 inline-block">
+    <ul class="mb-2 text-sm">
+      {{/*  <li class="mr-4 inline-block">
         <a href="{{ `authors/` | relLangURL }}{{ .Params.Author | urlize }}/">
           <i class="fa-regular fa-circle-user mr-2"></i>{{ .Params.author }}
         </a>
-      </li>
+      </li>  */}}
+
       <li class="mr-4 inline-block">
+          {{ partial "icon.html" (dict "style" "regular" "name" "calendar" "class" "mr-2") }}
+          <span>{{ .Date.Format "2006-01-01" }}</span>
+      </li>    
+
+      <li class="blog-list-categories-underline mr-4 inline-block">
+        <div class="flex items-center">
         <i class="fa-regular fa-folder mr-1"></i>
-        {{ range $i,$p:= $categories }}
-          <a
-            href="{{ `categories/` | relLangURL }}{{ . | urlize | lower }}/"
-            class="ms-1"
-            >{{ . | humanize }}{{ if ne $i (sub (len $categories) 1) }}
-              {{ "," }}
-            {{ end }}
-          </a>
-        {{ end }}
+          {{ range $i,$p:= $categories }}
+            <a
+              href="{{ `categories/` | relLangURL }}{{ . | urlize | lower }}/"
+              class="ms-1"
+              >{{ . | humanize }}{{ if ne $i (sub (len $categories) 1) }}
+                {{ "," }}
+              {{ end }}
+            </a>
+          {{ end }}
+        </div>
       </li>
     </ul>
   {{ end }}
   <p class="mb-6">{{ .Summary | plainify }}</p>
-  <a class="btn btn-outline-primary btn-sm" href="{{ .RelPermalink }}">
+  {{/*  <a class="btn btn-outline-primary btn-sm" href="{{ .RelPermalink }}">
     {{ T "read_more" }}
-  </a>
+  </a>  */}}
 </div>
