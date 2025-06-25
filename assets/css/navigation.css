@@ -19,7 +19,11 @@
 }
 
 .nav-link {
-  @apply text-text-dark hover:text-primary dark:text-darkmode-text-dark dark:hover:text-darkmode-primary block p-3 cursor-pointer font-semibold transition lg:px-2 lg:py-3;
+  @apply text-xl text-text-dark dark:text-darkmode-text-dark block p-3 cursor-pointer font-semibold transition lg:px-2 lg:py-3;
+}
+
+.nav-link:hover {
+  @apply text-blue-600 dark:text-darkmode-primary transition-colors duration-300 ease-in-out;
 }
 
 .nav-dropdown {
@@ -43,7 +47,11 @@
 }
 
 .nav-dropdown-link {
-  @apply text-text-dark hover:text-primary dark:text-darkmode-text dark:hover:text-darkmode-primary block py-1 font-semibold transition;
+  @apply text-xl text-text-dark dark:text-darkmode-text block py-1 font-semibold transition;
+}
+
+.nav-dropdown-link:hover {
+  @apply text-blue-600 dark:text-darkmode-primary transition-colors duration-300 ease-in-out;
 }
 
 /* theme-switcher */
