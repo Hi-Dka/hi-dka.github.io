@@ -11,14 +11,8 @@
 
   {{ $categories:= .Params.categories }}
   {{ if $categories }}
-    <ul class="mb-2 text-sm">
-      {{/*  <li class="mr-4 inline-block">
-        <a href="{{ `authors/` | relLangURL }}{{ .Params.Author | urlize }}/">
-          <i class="fa-regular fa-circle-user mr-2"></i>{{ .Params.author }}
-        </a>
-      </li>  */}}
-
-      <li class="mr-4 inline-block">
+    <ul class="mb-2 flex flex-wrap items-center leading-tight text-sm">
+      <li class="mr-4 flex items-center">
           {{ partial "icon.html" (dict "style" "regular" "name" "calendar" "class" "mr-2") }}
           <span>{{ .Date.Format "2006-01-01" }}</span>
       </li>    
