@@ -35,11 +35,11 @@
 }
 
 .nav-dropdown.active .nav-dropdown-list {
-  @apply block;
+  @apply opacity-100 visible;
 }
 
 .nav-dropdown-list {
-  @apply bg-white dark:bg-darkmode-body z-10 min-w-[180px] rounded p-4 shadow-sm hidden lg:invisible lg:absolute lg:block lg:opacity-0;
+  @apply bg-white dark:bg-darkmode-body z-10 min-w-[180px] rounded p-4 shadow-sm opacity-0 invisible transition-all duration-300 ease-in-out lg:absolute lg:block;
 }
 
 .nav-dropdown-item {
