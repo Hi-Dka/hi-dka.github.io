@@ -12,7 +12,7 @@
                 dark:hover:text-text-dark {{ if (and (eq $.Page.Kind `term`) 
                 (eq $.Page.Type `tags`) (eq $.Page.Title .Page.Title)) }} active
                 {{ end }} m-1 block rounded px-3 py-1 transition-colors 
-                duration-200 bg-gray-100 dark:bg-gray-800"
+                duration-300 ease-in-out bg-gray-100 dark:bg-gray-800"
                 href="{{ .Page.RelPermalink }}">
                 {{ .Page.Title }}
               </a>

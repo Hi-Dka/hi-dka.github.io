@@ -32,8 +32,8 @@
         {{ range $i,$p:= $tags }}
           <li class="mr-4 mt-2 inline-block flex flex-wrap">
             <a
-              class="hover:bg-black hover:text-white transition-colors 
-              duration-200 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm"
+              class="hover:bg-primary hover:text-white transition-colors 
+              duration-300 ease-in-out bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm"
               href="{{ `tags/` | relLangURL }}{{ . | urlize | lower }}/">
               {{ . | humanize }}
             </a>

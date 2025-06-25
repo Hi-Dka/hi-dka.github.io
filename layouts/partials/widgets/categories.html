@@ -8,7 +8,7 @@
           {{ range $name, $items := site.Taxonomies.categories }}
             <li>
               <a
-                class="categories-underline hover:text-black dark:hover:text-white 
+                class="categories-underline dark:hover:text-white 
                 {{ if (and (eq $.Page.Kind `term`) (eq $.Page.Type `categories`) 
                  (eq $.Page.Title .Page.Title)) }} active
                 {{ end }} flex justify-between"
