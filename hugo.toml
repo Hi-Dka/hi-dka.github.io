@@ -82,10 +82,26 @@ maxAge = "720h"
 [markup]
 [markup.goldmark.renderer]
 unsafe = true
+hardWraps = true
+
+[markup.goldmark.extensions]
+definitionList = true     # 
+footnote = true           # 
+linkify = true            # 
+strikethrough = true      # 
+table = true              # 
+taskList = true           # 
+typographer = true        # 
 
 [markup.highlight]
-style = 'monokai' # see https://xyproto.github.io/splash/docs/all.html
+style = 'xcode' # see https://xyproto.github.io/splash/docs/all.html
 lineNumbersInTable = false
+codeFences = true         # 
+guessSyntax = true        #
+lineNos = true            # 
+noClasses = true          #
+tabWidth = 4              # 
+# hl_Lines = ""  
 
 [markup.tableOfContents]
 startLevel = 2

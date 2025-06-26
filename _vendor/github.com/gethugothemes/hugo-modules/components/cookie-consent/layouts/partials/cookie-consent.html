@@ -2,11 +2,11 @@
 {{ with site.Params.cookies }}
   {{ if .enable }}
     <div id="cookie-box" class="cookie-box cookie-box-hide">
-      {{ .content | markdownify }}
+      {{ T "cookie_consent_text" | markdownify }}
       <button
         id="cookie-button"
         class="cookie-box-button btn btn-sm btn-outline-primary">
-        {{ .button }}
+        {{ T "cookie_consent_button" }}
       </button>
     </div>
 
