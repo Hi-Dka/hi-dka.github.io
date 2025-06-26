@@ -14,3 +14,5 @@ search_select: 用于选择
 search_close: 用于关闭
 next_article: 下一篇文章
 continue_reading: 继续阅读
+cookie_consent_text: "本网站使用 Cookie。继续使用本网站，即表示您同意使用 Cookie。"
+cookie_consent_button: "我接受"
