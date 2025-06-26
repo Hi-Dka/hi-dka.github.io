@@ -18,8 +18,12 @@ require (
 	github.com/gethugothemes/hugo-modules/modal v0.0.0-20250512035231-bb1514d411e2 // indirect
 	github.com/gethugothemes/hugo-modules/pwa v0.0.0-20250512035231-bb1514d411e2 // indirect
 	github.com/gethugothemes/hugo-modules/search v0.0.0-20250512035231-bb1514d411e2 // indirect
+	github.com/gethugothemes/hugo-modules/seo-tools/baidu-analytics v0.0.0-20250512035231-bb1514d411e2 // indirect
 	github.com/gethugothemes/hugo-modules/seo-tools/basic-seo v0.0.0-20250512035231-bb1514d411e2 // indirect
+	github.com/gethugothemes/hugo-modules/seo-tools/counter-analytics v0.0.0-20250512035231-bb1514d411e2 // indirect
 	github.com/gethugothemes/hugo-modules/seo-tools/google-tag-manager v0.0.0-20250512035231-bb1514d411e2 // indirect
+	github.com/gethugothemes/hugo-modules/seo-tools/matomo-analytics v0.0.0-20250512035231-bb1514d411e2 // indirect
+	github.com/gethugothemes/hugo-modules/seo-tools/plausible-analytics v0.0.0-20250512035231-bb1514d411e2 // indirect
 	github.com/gethugothemes/hugo-modules/seo-tools/site-verifications v0.0.0-20250512035231-bb1514d411e2 // indirect
 	github.com/gethugothemes/hugo-modules/shortcodes/button v0.0.0-20250512035231-bb1514d411e2 // indirect
 	github.com/gethugothemes/hugo-modules/shortcodes/notice v0.0.0-20250512035231-bb1514d411e2 // indirect
