@@ -1,5 +1,5 @@
 .content-panel {
-  @apply bg-theme-light dark:bg-darkmode-theme-light rounded-lg shadow-md;
+  @apply bg-theme-light dark:bg-darkmode-theme-light rounded-xl shadow-md;
 }
 
 #tableOfContentContainer {
