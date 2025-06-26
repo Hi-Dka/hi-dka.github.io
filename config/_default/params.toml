@@ -15,8 +15,8 @@ logo_text = "HiDka"
 # navbar fixed to top
 navbar_fixed = true
 # theme-mode
-theme_switcher = true
-theme_default = "system" # available options [light/dark/system]
+theme_switcher = false
+theme_default = "light" # available options [light/dark/system]
 # Main Sections
 mainSections = ["blog"]
 # contact form action
@@ -37,7 +37,7 @@ preloader = "" # use jpg, png, svg or gif format.
 
 # Navigation button
 [navigation_button]
-enable = true
+enable = false
 label = "get a quote"
 link = "contact"
 
@@ -62,11 +62,18 @@ content = "You must replace the **baseURL** in **hugo.toml** file when deploying
 # seo meta data for OpenGraph / Twitter Card
 # seo module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/basic-seo
 [metadata]
-keywords = ["Boilerplate", "Hugo"]
-description = "Hugo & Tailwindcss Starter"
-author = "zeon.studio"
-twitter = "zeon_studio"
-image = "images/og-image.png"
+keywords = ["hidka", "cpp", "git", "hugo", 
+"lldb", "llvm", "clang", "c++", "c++20", 
+"c++23", "c++17", "c++14", "c++11", "c++98", 
+"c++ programming", "c++ tutorial", "c++ guide", 
+"c++ tips", "c++ tricks", "c++ best practices", 
+"嵌入式", "嵌入式开发", "嵌入式系统", "嵌入式编程", 
+"嵌入式软件", "嵌入式硬件", "嵌入式Linux", "嵌入式C++", 
+"嵌入式C语言", "linux"]
+description = "C++ and Embedded Systems Blog - HiDka is a blog dedicated to C++ programming and embedded systems development. Explore tutorials, tips, and best practices for C++20, C++23, and more."
+author = "HiDka Team"
+# twitter = "zeon_studio"
+# image = "images/og-image.png"
 
 
 # site verifications
@@ -74,7 +81,7 @@ image = "images/og-image.png"
 [site_verification]
 google = ""   # Your verification code
 bing = ""     # Your verification code
-baidu = ""    # Your verification code
+baidu = "codeva-jAaJsafI3g"    # Your verification code
 facebook = "" # Your verification code
 mastodon = "" # Your verification code
 
