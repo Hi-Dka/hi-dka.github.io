@@ -1,33 +1,33 @@
 ---
-title: "Privacy"
+title: "隐私政策"
 # meta title
 meta_title: ""
 # meta description
-description: "This is meta description"
+description: ""
 # save as draft
 draft: false
 ---
 
-#### Responsibility of Contributors
+#### 隐私说明
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat quisque aliquam sagittis. Sem turpis sed viverra massa gravida pharetra. Non dui dolor potenti eu dignissim fusce. Ultrices amet, in curabitur a arcu a lectus morbi id. Iaculis erat sagittis in tortor cursus. Molestie urna eu tortor, erat scelerisque eget. Nunc hendrerit sed interdum lacus. Lorem quis viverra sed
+本博客是一个使用 Hugo 生成的静态网站，不含数据库，仅通过浏览器呈现内容。
 
-pretium, aliquam sit. Praesent elementum magna amet, tincidunt eros, nibh in leo. Malesuada purus, lacus, at aliquam suspendisse tempus. Quis tempus amet, velit nascetur sollicitudin. At sollicitudin eget amet in. Eu velit nascetur sollicitudin erhdfvssfvrgss eget viverra nec elementum. Lacus, facilisis tristique lectus in.
+#### 信息收集
 
-#### Gathering of Personal Information
+当您访问本博客时，服务器会自动记录一些基本信息（如IP地址、访问时间、浏览器类型），这些信息仅用于网站性能分析和安全防护。
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat quisque aliquam sagittis. Sem turpis sed viverra massa gravida pharetra. Non dui dolor potenti eu dignissim fusce. Ultrices amet, in curabitur a arcu a lectus morbi id. Iaculis erat sagittis in tortor cursus. Molestie urna eu tortor, erat scelerisque eget. Nunc hendrerit sed interdum lacus. Lorem quis viverra sed
+#### 第三方服务
 
-#### Protection of Personal- Information
+本博客使用：
+- **腾讯云CDN**：提供内容分发加速服务
+- **Google Analytics**：基础访问统计（可通过浏览器设置禁用）
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat quisque aliquam sagittis. Sem turpis sed viverra massa gravida pharetra. Non dui dolor potenti eu dignissim fusce. Ultrices amet, in curabitur a arcu a lectus morbi id. Iaculis erat sagittis in tortor cursus.
+#### Cookie使用
 
-Molestie urna eu tortor, erat scelerisque eget. Nunc hendrerit sed interdum lacus. Lorem quis viverra sed
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat
+本博客仅使用必要的技术性Cookie（如语言偏好设置）和分析Cookie。您可以随时通过浏览器设置管理或禁用Cookie。
 
-#### Privacy Policy Changes
+#### 联系方式
 
-1. Sll the Themefisher items are designed to be with the latest , We check all
-2. comments that threaten or harm the reputation of any person or organization
-3. personal information including, but limited to, email addresses, telephone numbers
-4. Any Update come in The technology Customer will get automatic Notification.
+如有任何关于隐私的疑问，请通过博客中提供的联系方式与我联系。
+
+最后更新日期：2023年12月1日

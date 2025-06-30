@@ -7,54 +7,73 @@ url = "/"
 weight = 1
 
 [[main]]
-name = "About"
-url = "/about"
+name = "Blog"
+url = "/blog"
 weight = 2
 
 [[main]]
-name = "Blog"
-url = "/blog"
+name = "About"
+url = "/about"
 weight = 3
 
 [[main]]
+name = "Elements"
+url = "/elements"
 weight = 4
-name = "Pages"
+
+# [[main]]
+# weight = 3
+# name = "Topics"
 
 # [[main]]
 # parent = "Pages"
 # name = "Blog"
 # url = "/blog"
 
-[[main]]
-parent = "Pages"
-name = "Contact"
-url = "/contact"
+# [[main]]
+# parent = "Pages"
+# name = "Contact"
+# url = "/contact"
 
-[[main]]
-parent = "Pages"
-name = "Authors"
-url = "/authors"
+# [[main]]
+# parent = "Pages"
+# name = "Authors"
+# url = "/authors"
 
-[[main]]
-parent = "Pages"
-name = "Categories"
-url = "/categories"
+# [[main]]
+# parent = "Topics"
+# name = "Linux"
+# url = "/Linux"
 
-[[main]]
-parent = "Pages"
-name = "404 Page"
-url = "/404"
+# [[main]]
+# parent = "Topics"
+# name = "C++"
+# url = "/C++"
 
+# [[main]]
+# parent = "Topics"
+# name = "Docker"
+# url = "/Docker"
+
+# [[main]]
+# parent = "Topics"
+# name = "iOS & Swift"
+# url = "/iOS_Swift"
+
+# [[main]]
+# parent = "Topics"
+# name = "Python"
+# url = "/Python"
 
 # footer menu
 [[footer]]
-name = "About"
-url = "/about"
+name = "Categories"
+url = "/categories"
 weight = 1
 
 [[footer]]
-name = "Elements"
-url = "/elements"
+name = "Tags"
+url = "/tags"
 weight = 2
 
 [[footer]]

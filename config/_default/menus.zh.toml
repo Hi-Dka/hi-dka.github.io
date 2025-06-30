@@ -7,54 +7,54 @@ url = "/"
 weight = 1
 
 [[main]]
-name = "关于"  # 将 "About" 更新为 "关于"
-url = "/about"
+name = "博客"
+url = "/blog"
 weight = 2
 
 [[main]]
-name = "博客"  # 将 "Elements" 更新为 "元素"
-url = "/blog"
+name = "关于"
+url = "/about"
 weight = 3
 
-[[main]]
-weight = 4
-name = "页面"
+# [[main]]
+# weight = 4
+# name = "页面"
 
 # [[main]]
 # parent = "页面"
 # name = "博客"
 # url = "/blog"
 
-[[main]]
-parent = "页面"
-name = "联系"
-url = "/contact"
+# [[main]]
+# parent = "页面"
+# name = "联系"
+# url = "/contact"
 
-[[main]]
-parent = "页面"
-name = "作者"
-url = "/authors"
+# [[main]]
+# parent = "页面"
+# name = "作者"
+# url = "/authors"
 
-[[main]]
-parent = "页面"
-name = "分类"
-url = "/categories"
+# [[main]]
+# parent = "页面"
+# name = "分类"
+# url = "/categories"
 
-[[main]]
-parent = "页面"
-name = "404 页面"
-url = "/404"
+# [[main]]
+# parent = "页面"
+# name = "404 页面"
+# url = "/404"
 
 
 # 页脚菜单
 [[footer]]
-name = "关于"
-url = "/about"
+name = "分类"
+url = "/categories"
 weight = 1
 
 [[footer]]
-name = "元素"
-url = "/elements"
+name = "标签"
+url = "/tags"
 weight = 2
 
 [[footer]]
