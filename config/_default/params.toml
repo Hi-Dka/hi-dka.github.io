@@ -11,7 +11,7 @@ logo_height = "32px"
 # if logo_webp set false, will not generate WEBP version of logo | default is true
 logo_webp = true
 # logo text will only show when logo is missing.
-logo_text = "HiDka"
+logo_text = "Hi-Dka"
 # navbar fixed to top
 navbar_fixed = true
 # theme-mode
@@ -70,8 +70,8 @@ keywords = ["hidka", "cpp", "git", "hugo",
 "嵌入式", "嵌入式开发", "嵌入式系统", "嵌入式编程", 
 "嵌入式软件", "嵌入式硬件", "嵌入式Linux", "嵌入式C++", 
 "嵌入式C语言", "linux"]
-description = "C++ and Embedded Systems Blog - HiDka is a blog dedicated to C++ programming and embedded systems development. Explore tutorials, tips, and best practices for C++20, C++23, and more."
-author = "HiDka Team"
+description = "C++ and Embedded Systems Blog - Hi-Dka is a blog dedicated to C++ programming and embedded systems development. Explore tutorials, tips, and best practices for C++20, C++23, and more."
+author = "Hi-Dka Team"
 # twitter = "zeon_studio"
 # image = "images/og-image.png"
 
