@@ -8,86 +8,53 @@ categories: ["工具"]
 author: ""
 tags: ["Git", "Commitizen", "Commitlint", "Docker"]
 draft: false
+nextArticle: ""
 ---
 
-在软件开发中，规范化的提交信息可以显著提升代码质量和团队协作效率。本文将介绍如何使用 Commitizen 和 Commitlint 来规范化 Git 提交信息，并提供 Docker 容器化的配置示例以及使用 pkg 打包 Commitizen 和 Commitlint。
-# 1. 什么是 Git 提交规范化？
-## 1. 什么是 Git 提交规范化？
-### 1. 什么是 Git 提交规范化？
-#### 1. 什么是 Git 提交规范化？
-##### 1. 什么是 Git 提交规范化？
-Git 提交规范化是指通过一定的规则和格式来撰写 Git 提交信息，以便于团队成员之间的沟通和协作。规范化的提交信息可以帮助开发者更好地理解每次提交的目的和内容，从而提高代码的可读性和可维护性。
+在软件开发中，规范化的提交信息可以显著提升代码质量和团队协作效率。什么是规范化的提交信息，请参考[**Conventional Commits**](https://www.conventionalcommits.org/en/v1.0.0/)。
 
-## 2. 使用 Commitizen 进行提交规范化
+本文将介绍如何使用 Commitizen 和 Commitlint 来规范化 Git 提交信息，并提供 Docker 容器化配置以及使用 pkg 打包 Commitizen 和 Commitlint 为二进制程序两种方式。而作为项目子模块安装的的配置方式请参考[**Commitizen**](https://github.com/commitizen/cz-cli) 和 [**Commitlint**](https://commitlint.js.org/guides/getting-started.html)官方提供的方法。
 
-Commitizen 是一个用于规范化 Git 提交信息的工具，它可以引导开发者按照预定义的格式撰写提交信息。使用 Commitizen 的步骤如下：
+## Docker 容器化配置
 
-1. 安装 Commitizen
-```bash
-npm install -g commitizen
-```
+使用 Docker 容器化 Commitizen 和 Commitlint，可以在任何支持 Docker 的环境中运行，而无需担心 Node.js 环境的配置问题。
 
-2. 初始化项目
-
-```bash
-commitizen init
-```
-
-3. 使用 Commitizen 提交代码
-
-```bash
-git add .
-git cz
-```
-
-## 3. 使用 Commitlint 进行提交信息校验
-
-Commitlint 是一个用于校验 Git 提交信息格式的工具，它可以帮助团队确保所有提交信息都遵循一致的规范。使用 Commitlint 的步骤如下：
-
-1. 安装 Commitlint
-
-```bash
-npm install -g @commitlint/{config-conventional,cli}
-```
-
-2. 创建配置文件
-
-在项目根目录下创建一个 `commitlint.config.js` 文件，内容如下：
-
-```javascript
-module.exports = {
-  extends: ['@commitlint/config-conventional']
-};
-```
-
-3. 在 Git 提交时自动校验
-
-可以使用 Git 钩子（如 Husky）在提交时自动校验提交信息格式。
-
-```bash
-npm install -g husky
-husky install
-```
-
-## 4. Docker 容器化配置示例
-
-为了方便团队成员使用，可以将 Commitizen 和 Commitlint 打包成 Docker 镜像。以下是一个简单的 Dockerfile 示例：
+1. 创建 Dockerfile
 
 ```dockerfile
-FROM node:14
+FROM node:20-alpine
 
-WORKDIR /app
+RUN apk add --no-cache git
 
-COPY package*.json ./
+RUN npm install -g commitizen cz-conventional-changelog
+RUN npm install -g commitlint @commitlint/config-conventional
 
-RUN npm install
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+ARG USER_NAME=hidka
 
-COPY . .
+RUN addgroup -g ${GROUP_ID} ${USER_NAME} && \
+    adduser -D -u ${USER_ID} -G ${USER_NAME} ${USER_NAME}
 
-ENTRYPOINT ["npx", "cz"]
+RUN echo '{"path": "cz-conventional-changelog"}' > /home/${USER_NAME}/.czrc
+RUN echo "export default { extends: ['@commitlint/config-conventional'] };" > /home/${USER_NAME}/commitlint.config.js
+
+WORKDIR /repo
+
+USER ${USER_NAME}
 ```
 
-# 5. 使用 pkg 打包 Commitizen 和 Commitlint
+2. 构建 Docker 镜像
+
+```bash
+docker build --build-arg USER_ID=$(id -u)  --build-arg GROUP_ID=$(id -g) --build-arg USER_NAME=$USER -t commitizen-commitlint -f Dockerfile .
+```
+
+3. 运行 Docker 容器
+
+```bash
+docker run --rm -it -v $(pwd):/repo commitizen-commitlint /
+## 5. 使用 pkg 打包 Commitizen 和 Commitlint
 
 可以使用 pkg 将 Node.js 应用打包成可执行文件，方便在没有 Node.js 环境的机器上运行。以下是一个简单的打包示例：
 
