@@ -51,3 +51,27 @@ html {
   @apply text-blue-400
          transition-colors duration-300 ease-in-out;
 }
+
+main h1{
+  font-size: 250%;
+}
+
+article .content h2 {
+  font-size: 200%;
+}
+article .content h3 {
+  font-size: 175%;
+}
+article .content h4 {
+  font-size: 150%;
+}
+article .content h5 {
+  font-size: 125%;
+}
+article .content h6 {
+  font-size: 112.5%;
+}
+
+p {
+  line-height: 1.75;
+}

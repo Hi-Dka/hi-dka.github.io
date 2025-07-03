@@ -62,7 +62,7 @@ content = "You must replace the **baseURL** in **hugo.toml** file when deploying
 # seo meta data for OpenGraph / Twitter Card
 # seo module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/basic-seo
 [metadata]
-keywords = ["hidka", "cpp", "git", "hugo", 
+keywords = ["hi-dka", "cpp", "git", "hugo", 
 "lldb", "llvm", "clang", "c++", "c++20", 
 "c++23", "c++17", "c++14", "c++11", "c++98", 
 "c++ programming", "c++ tutorial", "c++ guide", 

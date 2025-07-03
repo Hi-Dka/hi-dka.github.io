@@ -1,5 +1,5 @@
 ---
 title: "博客"
-meta_title: ""
-description: "this is meta description"
+meta_title: "个人博客 - 工作总结与经验分享"
+description: "记录工作和学习中的技术实践与思考总结。本博客内容由个人整理，可能存在不准确之处。如果您发现任何错误或值得改进的地方，欢迎与我探讨修正。真理越辩越明，期待与您共同进步。"
 ---
