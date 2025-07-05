@@ -16,11 +16,9 @@ nextArticle: ""
 为实现 Git 提交信息的规范化，常用的工具有 Commitizen 和 Commitlint。Commitizen 用于生成符合规范的提交信息，而 Commitlint 则用于检查提交信息是否符合规范。本文将介绍两款工具的 Docker 容器化配置以及使用 pkg 打包为二进制程序两种方式。而作为项目子模块安装的的配置方式请参考[**Commitizen**](https://github.com/commitizen/cz-cli) 和 [**Commitlint**](https://commitlint.js.org/guides/getting-started.html)官方提供的方法。
 
 ## Docker 容器化配置
-
 使用 Docker 容器化 Commitizen 和 Commitlint，可以在任何支持 Docker 的环境中运行，而无需担心 Node.js 环境的配置问题。
 
 ### 1. Dockerfile 配置
-
 Dockerfile 是一个文本文件，包含了构建 Docker 镜像所需的所有指令。以下是一个示例 Dockerfile，用于配置 Commitizen 和 Commitlint：
 
 ```dockerfile
@@ -47,7 +45,6 @@ USER ${USER_NAME}
 ```
 
 ### 2. 构建 Docker 镜像
-
 在项目根目录下创建一个名为 Dockerfile 的文件，并将上述内容复制到该文件中。然后在终端中运行以下命令构建 Docker 镜像：
 
 ```bash
@@ -55,7 +52,6 @@ docker build --build-arg USER_ID=$(id -u)  --build-arg GROUP_ID=$(id -g) --build
 ```
 
 ### 3. 添加到 Git 钩子
-
 Git 钩子是一些脚本，可以在特定的 Git 事件发生时自动执行。比如commit-msg 钩子可以在提交信息被输入时触发，而 prepare-commit-msg 钩子可以在提交消息准备好后触发。这两个钩子可以帮助我们在提交时自动生成规范的提交信息，并检查提交信息是否符合规范。为了在 Git 提交时自动使用 Commitizen 和 Commitlint，可以在项目中添加 Git 钩子，也可以使用 `git config --global core.hooksPath` 命令设置全局钩子路径，以便所有项目都可以使用不用重复配置。以下是如何配置 Git 钩子以使用 Commitizen 和 Commitlint 的示例。
 
 在项目根目录下创建 .git/hooks/commit-msg 文件，并添加以下内容：
@@ -83,23 +79,12 @@ exit 0
 ```
 
 ## 使用 pkg 打包
-
-pkg 是一个可以将 Node.js 应用打包为独立可执行文件的工具。使用 pkg 可以将 Commitizen 和 Commitlint 打包为二进制程序，方便在没有 Node.js 环境的机器上运行。ncc 是一个用于将 Node.js 应用打包为单个文件的工具，适合用于打包小型应用或脚本。
-
-### 1. 安装打包环境
-
-首先，确保您的系统上安装了 Node.js 和 npm。然后全局安装 pkg 和 ncc：
-
-```bash
-npm install -g pkg @vercel/ncc
-```
+pkg 是一个可以将 Node.js 应用打包为独立可执行文件的工具。使用 pkg 可以将 Commitizen 和 Commitlint 打包为二进制程序，方便在没有 Node.js 环境的机器上运行。ncc 是一个用于将 Node.js 应用打包为单个文件的工具，适合用于打包小型应用或脚本。首先，确保您的系统上安装了 Node.js 和 npm。
 
 分别创建 commitizen 和 commitlint 文件夹用于后期打包
 
-### 2. 打包 commitizen 
-
+### 1. 打包 commitizen 
 #### 创建 cli.js 文件
-
 在 commitizen 文件夹中创建一个 cli.js 入口文件，内容如下：
 
 ```javascript
@@ -129,7 +114,6 @@ try {
 ```
 
 #### 创建 package.json 文件
-
 在 commitizen 文件夹中创建一个 package.json 文件，内容如下：
 
 ```json
@@ -143,17 +127,94 @@ try {
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0"
   },
+
+}
+```
+
+#### 打包和配置
+在 commitizen 文件夹中运行以下命令：
+
+```bash
+npm install --no-fund
+npm run build
+```
+
+在项目目录或者home目录下创建一个 .czrc 文件，内容如下：
+
+```json
+{
+  "path": "cz-conventional-changelog"
+}
+```
+
+也可以直接在package.json 中配置adapter 路径，如下:
+
+```json
   "config": {
     "commitizen": {
       "path": "/snapshot/commitizen/node_modules/cz-conventional-changelog"
     }
   }
-}
+```
+这里的 path 路径 /snapshot/commitizen/node_modules/cz-conventional-changelog 是因为 pkg 打包后，所有的依赖都会被打包到 /snapshot/commitizen 目录下。
+
+### 2. 打包 commitlint
+
+最新版本的 commitlint 是 ESM 模块，但是目前 pkg 对 ESM 模块的支持还不完善，因此需要使用旧版本的 commitlint, 最后一个对 cjs 支持友好的版本为18.6.1。以下是打包 commitlint 的步骤:
+
+#### 创建 cli.js 文件
+
+在 commitlint 文件夹中创建一个 cli.js 入口文件，内容如下：
+
+```javascript
+//cli.js
+const path = require('path');
+const { spawn } = require('child_process');
+
+const args = process.argv.slice(2);
+const cliPath = require.resolve('commitlint/cli');
+
+const child = spawn(process.execPath, [cliPath, ...args], {
+  stdio: 'inherit',
+  shell: true,
+  cwd: process.cwd()
+});
+
+child.on('exit', (code, signal) => {
+  if (code !== null) {
+    process.exit(code);
+  } else if (signal) {
+    console.error(`${signal}`);
+    process.exit(1);
+  } else {
+    process.exit(0);
+  }
+});
+
+child.on('error', (err) => {
+  console.error(`${err.message}`);
+  process.exit(1);
+});
 ```
 
-其中的路径和 targets 需要根据实际情况进行调整。这里的 path 路径 /snapshot/commitizen/node_modules/cz-conventional-changelog 是因为 pkg 打包后，所有的依赖都会被打包到 /snapshot/commitizen 目录下。-t 指定了打包后的目标平台和架构，这里使用的是 node18-linux-x64，表示打包为 Node.js 18 版本的 Linux x64 架构。
+#### 创建 package.json 文件
 
-#### 打包
+在 commitlint 文件夹中创建一个 package.json 文件，内容如下：
+
+```json
+{
+  "name": "commitlint",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npx pkg cli.js --public --targets node18-linux-x64 --output dist/commitlint"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^18.6.3",
+    "commitlint": "^18.6.1"
+  }
+}
+```
+#### 打包和配置
 
 在 commitizen 文件夹中运行以下命令：
 
@@ -162,11 +223,13 @@ npm install --no-fund
 npm run build
 ```
 
-### 3. 打包 commitlint
+{{< notice "tip" >}}
+因为使用的是cjs模块，所以配置文件需要使用 CommonJS 模块格式，或者 yaml 和 json 格式，具体参考官方示例。然后使用 -g 选项指定配置文件路径。
+{{< /notice >}}
 
-最新版本的 commitlint 是 ESM 模块，但是目前 pkg 对 ESM 模块的支持还不完善，因此需要使用旧版本的 commitlint, 最后一个支持 cjm 的版本为18。以下是打包 commitlint 的步骤:
+### 3. Git 钩子配置
+git 钩子配置同上面的 Docker 容器化配置类似，只需要将 commit-msg 和 prepare-commit-msg 文件中的 docker run 命令替换为直接调用打包后的二进制文件即可。
 
-#### 1. 创建 package.json 文件
+### 4. 二进制程序使用以及注意事项
 
-
-
+打包完成后，可以在 commitizen/dist 和 commitlint/dist 目录下找到生成的二进制文件 cz 和 commitlint。您可以将这些文件复制到任何支持 Linux 的机器上运行。需要注意的是，这些二进制文件是针对特定平台和架构打包的，因此只能在相同的环境中运行。如果需要在其他平台上运行，需要重新打包，并指定相应的 targets。通过以上方式打包得到的二进制程序，使用的是conventional commit 规范的提交信息，如果需要使用其他规范的提交信息，请自定义修改配置文件。
