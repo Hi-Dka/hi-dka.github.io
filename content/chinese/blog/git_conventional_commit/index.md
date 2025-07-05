@@ -76,7 +76,7 @@ commit_msg_source="$3"
 
 # 如果没有指定提交类型或提交消息来源，则使用 Commitizen 生成提交信息
 if [ -z "$commit_type" ] && [ -z "$commit_msg_source" ]; then
-    exec < /dev/tty && docker run -it --rm -v "$(pwd):/repo" commit-tools sh -c 'cz --hook'
+    exec < /dev/tty && docker run -it --rm -v "$(pwd):/repo" commit-tools sh -c 'cz -a --hook'
 fi
 
 exit 0
@@ -167,3 +167,6 @@ npm run build
 最新版本的 commitlint 是 ESM 模块，但是目前 pkg 对 ESM 模块的支持还不完善，因此需要使用旧版本的 commitlint, 最后一个支持 cjm 的版本为18。以下是打包 commitlint 的步骤:
 
 #### 1. 创建 package.json 文件
+
+
+
