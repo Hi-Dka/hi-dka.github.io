@@ -105,3 +105,35 @@ article .content a:hover {
 article .content a:hover::after {
   background-color: #000000 !important;
 }
+
+article .content table {
+  @apply w-full table-auto text-left shadow-md rounded-xl my-8 overflow-hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  &:before {
+    content: none !important;
+  }
+
+  thead {
+    @apply bg-gray-100 dark:bg-darkmode-theme-dark;
+    th {
+      @apply px-2 py-4 text-center text-sm font-semibold uppercase tracking-wider text-gray-600;
+    }
+  }
+
+  tbody {
+    @apply bg-white divide-y divide-gray-200;
+
+    tr {
+      @apply border-b-0;
+      &:nth-of-type(even) {
+        @apply bg-gray-50;
+      }
+    }
+
+    td {
+      @apply px-3 py-4 text-center text-sm align-middle text-text;
+    }
+  }
+}
