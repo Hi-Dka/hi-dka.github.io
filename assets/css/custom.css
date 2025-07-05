@@ -1,8 +1,17 @@
 /* DO NOT WRITE ANY STYLE IN THIS FILE */
 /* If you want to add your own styles, please write it in the `./assets/css/custom.css` file. */
 
+.shadow-xs {
+  box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+
+.toc_sticky {
+  position: sticky;
+  top: calc(var(--header-height) + 24px);
+}
+
 .header {
-    @apply py-4 bg-white dark:bg-darkmode-theme-light shadow-sm sticky top-0 z-30
+    @apply py-2 bg-white shadow-xs
 }
 
 div.chart {

@@ -39,14 +39,14 @@
     {{ partial "essentials/header.html" . }}
     {{ partial "search-modal.html" (dict "Context" . ) }}
 
+    <div class="flex-container">
+      <main>
+        {{ block "main" . }}{{ end }}
+      </main>
 
-    <main>
-      {{ block "main" . }}{{ end }}
-    </main>
-
-    <!-- footer -->
-    {{ partial "essentials/footer.html" . }}
-
+      <!-- footer -->
+      {{ partial "essentials/footer.html" . }}
+    </div>
 
     <!-- script (always cache it) -->
     {{ partialCached "essentials/script.html" . }}

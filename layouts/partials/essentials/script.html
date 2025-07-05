@@ -56,3 +56,7 @@
 
 <!-- cookie consent -->
 {{ partialCached "announcement-script.html" . }}
+
+<!-- header-height -->
+{{ $headerHeightJS := resources.Get "js/header-height.js" | minify }}
+<script src="{{ $headerHeightJS.RelPermalink }}"></script>

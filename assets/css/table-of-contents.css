@@ -58,7 +58,7 @@ nav#TableOfContents li.active > a {
 nav#TableOfContents ul ul,
 nav#TableOfContents ol ol {
   @apply my-1 pl-4;
-  border-left: 1px solid currentColor;
+  border-left: 1px solid #eaeaea;
 }
 
 .dark nav#TableOfContents li.active > a {
