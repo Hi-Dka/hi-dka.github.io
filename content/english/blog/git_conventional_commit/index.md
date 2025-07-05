@@ -1,71 +1,71 @@
 ---
-title: "Git 提交规范化：提升代码质量与协作效率"
-meta_title: "Git Conventional Commit - 提交信息规范化完全指南"
-description: "通过 Commitizen 和 Commitlint 实现 Git 提交规范化，提升代码可读性、自动化发布流程并增强团队协作。包含 Docker 和二进制打包两种便捷配置方案。"
+title: "Git Commit Standardization: Enhancing Code Quality and Collaboration Efficiency"
+meta_title: "Git Conventional Commit - Complete Guide to Standardizing Commit Messages"
+description: "Implement Git commit standardization through Commitizen and Commitlint to improve code readability, automate release workflows, and enhance team collaboration. Includes both Docker and binary packaging configuration options."
 date: 2024-04-01T05:00:00Z
 image: "git.png"
-categories: ["工具", "开发规范"]
+categories: ["Tools", "Development Standards"]
 author: ""
-tags: ["Git", "Commitizen", "Commitlint", "Docker", "规范化", "最佳实践"]
+tags: ["Git", "Commitizen", "Commitlint", "Docker", "Standardization", "Best Practices"]
 draft: false
 nextArticle: ""
 ---
 
-在软件开发中，规范化的提交信息可以显著提升代码质量和团队协作效率。什么是规范化的提交信息，请参考[**Conventional Commits**](https://www.conventionalcommits.org/en/v1.0.0/)。
+In software development, standardized commit messages can significantly improve code quality and team collaboration efficiency. For information about what constitutes standardized commit messages, refer to [**Conventional Commits**](https://www.conventionalcommits.org/en/v1.0.0/).
 
-## 为什么需要规范化提交信息？
+## Why Standardize Commit Messages?
 
-使用规范化的提交信息有以下几个关键优势：
+Using standardized commit messages offers several key advantages:
 
-1. **提高可读性** - 统一格式的提交信息使代码历史更易于理解和追踪
-2. **自动化发布** - 可基于提交类型自动生成版本号和更新日志
-3. **简化代码审查** - 清晰的提交目的使代码审查更加高效
-4. **增强团队协作** - 统一标准降低沟通成本，提高团队效率
-5. **方便筛选与查找** - 根据类型（如 feat, fix, docs）快速过滤相关提交
+1. **Improved Readability** - Consistent format makes code history easier to understand and track
+2. **Automated Releases** - Enables automatic version numbering and changelog generation based on commit types
+3. **Streamlined Code Reviews** - Clear commit purposes make code reviews more efficient
+4. **Enhanced Team Collaboration** - Unified standards reduce communication overhead and improve team efficiency
+5. **Easier Filtering and Searching** - Quickly filter relevant commits by type (e.g., feat, fix, docs)
 
-## Conventional Commits 格式示例
+## Conventional Commits Format Example
 
-符合规范的提交信息通常具有以下格式：
-
-```
-<类型>[可选作用域]: <描述>
-
-[可选正文]
-
-[可选脚注]
-```
-
-常见提交类型示例：
+Compliant commit messages typically have the following format:
 
 ```
-feat: 添加用户登录功能
-fix: 修复移动端布局错位问题
-docs: 更新API文档
-style: 格式化代码样式
-refactor: 重构用户认证模块
-test: 添加购物车测试用例
-chore: 更新构建脚本
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer]
 ```
 
-为实现 Git 提交信息的规范化，常用的工具有 Commitizen 和 Commitlint。Commitizen 用于生成符合规范的提交信息，而 Commitlint 则用于检查提交信息是否符合规范。本文将介绍两款工具的 Docker 容器化配置以及使用 pkg 打包为二进制程序两种方式。而作为项目子模块安装的的配置方式请参考[**Commitizen**](https://github.com/commitizen/cz-cli) 和 [**Commitlint**](https://commitlint.js.org/guides/getting-started.html)官方提供的方法。
+Common commit type examples:
 
-## 实现方式对比
+```
+feat: add user login functionality
+fix: resolve mobile layout misalignment
+docs: update API documentation
+style: format code style
+refactor: restructure user authentication module
+test: add shopping cart test cases
+chore: update build scripts
+```
 
-以下是三种实现方式的对比：
+To implement standardized Git commit messages, tools like Commitizen and Commitlint are commonly used. Commitizen helps generate compliant commit messages, while Commitlint checks if commit messages adhere to standards. This article introduces two approaches: Docker containerization and binary packaging using pkg. For project submodule installation configuration, please refer to the official methods provided by [**Commitizen**](https://github.com/commitizen/cz-cli) and [**Commitlint**](https://commitlint.js.org/guides/getting-started.html).
 
-| 实现方式 | 优势 | 劣势 | 适用场景 |
+## Implementation Method Comparison
+
+Here's a comparison of three implementation approaches:
+
+| Implementation Method | Advantages | Disadvantages | Suitable Scenarios |
 |---------|------|------|---------|
-| **Docker容器** | 无需本地Node环境<br>环境隔离<br>团队统一配置 | 需要Docker环境<br>网络原因可能导致镜像构建失败 | 团队协作<br>CI/CD流水线 |
-| **二进制打包** | 无需依赖<br>易于分发<br>启动快速 | 跨平台需单独打包<br>更新需重新打包 | 个人开发<br>无Node环境 |
-| **项目安装** | 配置简单<br>易于定制<br>与项目绑定 | 每个项目需单独配置<br>需要Node环境 | 单个项目<br>定制化需求高 |
+| **Docker Container** | No local Node environment required<br>Environment isolation<br>Unified team configuration | Requires Docker environment<br>Network issues may affect image building | Team collaboration<br>CI/CD pipelines |
+| **Binary Packaging** | No dependencies required<br>Easy to distribute<br>Quick startup | Separate packaging needed for cross-platform<br>Updates require repackaging | Individual development<br>No Node environment |
+| **Project Installation** | Simple configuration<br>Easy to customize<br>Bound to project | Each project needs separate configuration<br>Node environment required | Single projects<br>High customization needs |
 
-## Docker 容器化配置
+## Docker Container Configuration
 
-使用 Docker 容器化 Commitizen 和 Commitlint，可以在任何支持 Docker 的环境中运行，而无需担心 Node.js 环境的配置问题。
+Using Docker containers for Commitizen and Commitlint allows running in any Docker-supported environment without worrying about Node.js configuration.
 
-### 1. Dockerfile 配置
+### 1. Dockerfile Configuration
 
-Dockerfile 是一个文本文件，包含了构建 Docker 镜像所需的所有指令。以下是一个示例 Dockerfile，用于配置 Commitizen 和 Commitlint：
+A Dockerfile is a text file containing all instructions needed to build a Docker image. Here's an example Dockerfile for configuring Commitizen and Commitlint:
 
 ```dockerfile
 FROM node:20-alpine
@@ -90,21 +90,21 @@ WORKDIR /repo
 USER ${USER_NAME}
 ```
 
-### 2. 构建 Docker 镜像
+### 2. Building the Docker Image
 
-在项目根目录下创建一个名为 Dockerfile 的文件，并将上述内容复制到该文件中。然后在终端中运行以下命令构建 Docker 镜像：
+Create a file named Dockerfile in your project root directory and copy the above content into it. Then run the following command in the terminal to build the Docker image:
 
 ```bash
 docker build --build-arg USER_ID=$(id -u)  --build-arg GROUP_ID=$(id -g) --build-arg USER_NAME=$USER -t commit-tools -f Dockerfile .
 ```
 
-### 3. 添加到 Git 钩子
+### 3. Adding to Git Hooks
 
-Git 钩子是一些脚本，可以在特定的 Git 事件发生时自动执行。比如commit-msg 钩子可以在提交信息被输入时触发，而 prepare-commit-msg 钩子可以在提交消息准备好后触发。这两个钩子可以帮助我们在提交时自动生成规范的提交信息，并检查提交信息是否符合规范。为了在 Git 提交时自动使用 Commitizen 和 Commitlint，可以在项目中添加 Git 钩子，也可以使用 `git config --global core.hooksPath` 命令设置全局钩子路径，以便所有项目都可以使用不用重复配置。以下是如何配置 Git 钩子以使用 Commitizen 和 Commitlint 的示例。
+Git hooks are scripts that run automatically when specific Git events occur. For example, the commit-msg hook triggers when a commit message is entered, while the prepare-commit-msg hook triggers after a commit message is prepared. These hooks can help automatically generate standardized commit messages and check if commit messages comply with standards. To automatically use Commitizen and Commitlint during Git commits, you can add Git hooks to your project, or use the `git config --global core.hooksPath` command to set a global hooks path for all projects without repetitive configuration. Below are examples of how to configure Git hooks to use Commitizen and Commitlint.
 
-#### commit-msg 钩子
+#### commit-msg Hook
 
-在项目根目录下创建 .git/hooks/commit-msg 文件，并添加以下内容：
+Create a .git/hooks/commit-msg file in your project root directory and add the following content:
 
 ```bash
 #!/bin/sh
@@ -112,9 +112,9 @@ Git 钩子是一些脚本，可以在特定的 Git 事件发生时自动执行�
 docker run --rm -e FORCE_COLOR=true -v "$(pwd):/repo" commit-tools sh -c 'commitlint -g ~/commitlint.config.js --edit $1 --verbose'
 ```
 
-#### prepare-commit-msg 钩子
+#### prepare-commit-msg Hook
 
-在项目根目录下创建 .git/hooks/prepare-commit-msg 文件，并添加以下内容：
+Create a .git/hooks/prepare-commit-msg file in your project root directory and add the following content:
 
 ```bash
 #!/bin/sh
@@ -122,7 +122,7 @@ docker run --rm -e FORCE_COLOR=true -v "$(pwd):/repo" commit-tools sh -c 'commit
 commit_type="$2"
 commit_msg_source="$3"
 
-# 如果没有指定提交类型或提交消息来源，则使用 Commitizen 生成提交信息
+# If no commit type or message source is specified, use Commitizen to generate commit message
 if [ -z "$commit_type" ] && [ -z "$commit_msg_source" ]; then
     exec < /dev/tty && docker run -it --rm -v "$(pwd):/repo" commit-tools sh -c 'cz -a --hook'
 fi
@@ -130,17 +130,17 @@ fi
 exit 0
 ```
 
-## 使用 pkg 打包为二进制程序
+## Using pkg to Create Binary Executables
 
-pkg 是一个可以将 Node.js 应用打包为独立可执行文件的工具。使用 pkg 可以将 Commitizen 和 Commitlint 打包为二进制程序，方便在没有 Node.js 环境的机器上运行。ncc 是一个用于将 Node.js 应用打包为单个文件的工具，适合用于打包小型应用或脚本。首先，确保您的系统上安装了 Node.js 和 npm。
+pkg is a tool that can package Node.js applications into standalone executable files. Using pkg, we can package Commitizen and Commitlint into binary programs for use on machines without a Node.js environment. ncc is a tool for packaging Node.js applications into single files, suitable for packaging small applications or scripts. First, ensure Node.js and npm are installed on your system.
 
-分别创建 commitizen 和 commitlint 文件夹用于后期打包
+Create separate folders for commitizen and commitlint for later packaging.
 
-### 1. 打包 commitizen 
+### 1. Packaging Commitizen
 
-#### 创建 cli.js 文件
+#### Create the cli.js File
 
-在 commitizen 文件夹中创建一个 cli.js 入口文件，内容如下：
+Create an entry file cli.js in the commitizen folder with the following content:
 
 ```javascript
 // cli.js
@@ -168,9 +168,9 @@ try {
 }
 ```
 
-#### 创建 package.json 文件
+#### Create the package.json File
 
-在 commitizen 文件夹中创建一个 package.json 文件，内容如下：
+Create a package.json file in the commitizen folder with the following content:
 
 ```json
 {
@@ -187,16 +187,16 @@ try {
 }
 ```
 
-#### 打包和配置
+#### Packaging and Configuration
 
-在 commitizen 文件夹中运行以下命令：
+Run the following commands in the commitizen folder:
 
 ```bash
 npm install --no-fund
 npm run build
 ```
 
-在项目目录或者home目录下创建一个 .czrc 文件，内容如下：
+Create a .czrc file in your project directory or home directory with the following content:
 
 ```json
 {
@@ -204,7 +204,7 @@ npm run build
 }
 ```
 
-也可以直接在package.json 中配置adapter 路径，如下:
+Alternatively, you can configure the adapter path directly in package.json:
 
 ```json
   "config": {
@@ -213,15 +213,15 @@ npm run build
     }
   }
 ```
-这里的 path 路径 /snapshot/commitizen/node_modules/cz-conventional-changelog 是因为 pkg 打包后，所有的依赖都会被打包到 /snapshot/commitizen 目录下。
+The path `/snapshot/commitizen/node_modules/cz-conventional-changelog` is used because after packaging with pkg, all dependencies are packaged into the `/snapshot/commitizen` directory.
 
-### 2. 打包 commitlint
+### 2. Packaging Commitlint
 
-最新版本的 commitlint 是 ESM 模块，但是目前 pkg 对 ESM 模块的支持还不完善，因此需要使用旧版本的 commitlint, 最后一个对 cjs 支持友好的版本为18.6.1。以下是打包 commitlint 的步骤:
+The latest version of commitlint uses ESM modules, but pkg's support for ESM modules is still limited. Therefore, we need to use an older version of commitlint. The last version with good cjs support is 18.6.1. Here are the steps for packaging commitlint:
 
-#### 创建 cli.js 文件
+#### Create the cli.js File
 
-在 commitlint 文件夹中创建一个 cli.js 入口文件，内容如下：
+Create an entry file cli.js in the commitlint folder with the following content:
 
 ```javascript
 //cli.js
@@ -254,9 +254,9 @@ child.on('error', (err) => {
 });
 ```
 
-#### 创建 package.json 文件
+#### Create the package.json File
 
-在 commitlint 文件夹中创建一个 package.json 文件，内容如下：
+Create a package.json file in the commitlint folder with the following content:
 
 ```json
 {
@@ -271,9 +271,10 @@ child.on('error', (err) => {
   }
 }
 ```
-#### 打包和配置
 
-在 commitlint 文件夹中运行以下命令：
+#### Packaging and Configuration
+
+Run the following commands in the commitlint folder:
 
 ```bash
 npm install --no-fund
@@ -281,21 +282,21 @@ npm run build
 ```
 
 {{< notice "tip" >}}
-因为使用的是cjs模块，所以配置文件需要使用 CommonJS 模块格式，或者 yaml 和 json 格式，具体参考官方示例。然后使用 -g 选项指定配置文件路径。
+Since we're using cjs modules, the configuration file needs to use CommonJS module format, or yaml and json formats. See official examples for details. Then use the -g option to specify the configuration file path.
 {{< /notice >}}
 
-### 3. Git 钩子配置
+### 3. Git Hook Configuration
 
-git 钩子配置同上面的 Docker 容器化配置类似，只需要将 commit-msg 和 prepare-commit-msg 文件中的 docker run 命令替换为直接调用打包后的二进制文件即可。
+The Git hook configuration is similar to the Docker container configuration above. Just replace the docker run commands in the commit-msg and prepare-commit-msg files with direct calls to the packaged binary files.
 
-#### commit-msg 钩子（二进制版本）
+#### commit-msg Hook (Binary Version)
 
 ```bash
 #!/bin/sh
 /path/to/commitlint -g /path/to/commitlint.config.js --edit $1 --verbose
 ```
 
-#### prepare-commit-msg 钩子（二进制版本）
+#### prepare-commit-msg Hook (Binary Version)
 
 ```bash
 #!/bin/sh
@@ -309,26 +310,26 @@ fi
 exit 0
 ```
 
-### 4. 二进制程序使用以及注意事项
+### 4. Binary Program Usage and Considerations
 
-打包完成后，可以在 commitizen/dist 和 commitlint/dist 目录下找到生成的二进制文件 cz 和 commitlint。您可以将这些文件复制到任何支持 Linux 的机器上运行。需要注意的是，这些二进制文件是针对特定平台和架构打包的，因此只能在相同的环境中运行。如果需要在其他平台上运行，需要重新打包，并指定相应的 targets。通过以上方式打包得到的二进制程序，使用的是conventional commit 规范的提交信息，如果需要使用其他规范的提交信息，请自定义修改配置文件。
+After packaging, you can find the generated binary files cz and commitlint in the commitizen/dist and commitlint/dist directories. You can copy these files to any Linux-compatible machine to run them. Note that these binary files are packaged for specific platforms and architectures, so they can only run in the same environment. If you need to run them on other platforms, you'll need to repackage them with the appropriate targets specified. The binary programs packaged using this method use the conventional commit standard. If you need to use other commit message standards, please customize the configuration files.
 
-## 常见问题与解决方案
+## Common Issues and Solutions
 
-### Docker 容器无法访问 Git 仓库
-- **问题**: Docker 容器无法访问 Git 仓库的提交信息
-- **解决**: 确保正确映射了 `.git` 目录，例如 `-v "$(pwd)/.git:/repo/.git"`
+### Docker Container Cannot Access Git Repository
+- **Issue**: Docker container cannot access Git repository commit information
+- **Solution**: Ensure the `.git` directory is properly mapped, e.g., `-v "$(pwd)/.git:/repo/.git"`
 
-### 无法交互式使用 Commitizen
-- **问题**: 在某些环境中无法交互式使用 Commitizen
-- **解决**: 确保正确重定向了终端 `exec < /dev/tty && ...`
+### Cannot Use Commitizen Interactively
+- **Issue**: Cannot use Commitizen interactively in certain environments
+- **Solution**: Ensure terminal is properly redirected with `exec < /dev/tty && ...`
 
-### 兼容性问题
-- **问题**: 二进制程序在某些系统上运行失败
-- **解决**: 针对目标系统重新打包，或使用 Docker 方案
+### Compatibility Issues
+- **Issue**: Binary programs fail to run on certain systems
+- **Solution**: Repackage for the target system or use the Docker approach
 
-## 结论
+## Conclusion
 
-规范化 Git 提交信息是提高代码质量和团队协作效率的重要步骤。通过本文介绍的 Docker 容器化和二进制打包两种方式，您可以根据实际需求选择最适合的方案，轻松实现提交信息规范化。这不仅能提升代码历史的可读性，还能促进自动化发布流程，为项目管理带来显著价值。
+Standardizing Git commit messages is an important step in improving code quality and team collaboration efficiency. Through the Docker containerization and binary packaging approaches introduced in this article, you can choose the most suitable solution based on your actual needs to easily implement commit message standardization. This not only enhances the readability of code history but also promotes automated release processes, bringing significant value to project management.
 
-无论您选择哪种方式，规范化的提交信息都将为您的项目带来长期的收益，特别是在团队规模扩大和项目复杂度增加时。
+Regardless of which approach you choose, standardized commit messages will bring long-term benefits to your project, especially as team size grows and project complexity increases.
